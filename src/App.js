@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import WeatherApp from './pages/WeatherApp';
 import { WeatherContext } from './services/WeatherContext';
+import './App.css';
 
 function App() {
     const [weatherState, setWeatherState] = useState({
@@ -8,9 +11,13 @@ function App() {
         isData: false
     });
     return (
-        <WeatherContext.Provider value={{ weatherState, setWeatherState }}>
-            <WeatherApp />
-        </WeatherContext.Provider>
+        <div className="App">
+            <WeatherContext.Provider value={{ weatherState, setWeatherState }}>
+                <Header />
+                <WeatherApp />
+                <Footer />
+            </WeatherContext.Provider>
+        </div>
     );
 }
 
