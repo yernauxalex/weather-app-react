@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { WeatherContext } from '../services/WeatherContext';
 import DisplayWeather from '../components/DisplayWeather';
 import SearchBar from '../components/SearchBar';
-import StyledWeatherApp from '../styles/styledComponents/StyledWeatherApp';
+import { Container } from 'react-bootstrap';
 import defaultbg from '../assets/weatherapp-background/defaultbg.jpg';
 import clear from '../assets/weatherapp-background/clear.jpg';
 import cloudy from '../assets/weatherapp-background/cloudy.jpg';
@@ -52,11 +52,10 @@ function WeatherApp() {
         }
     }
     return (
-        <StyledWeatherApp background={background}>
-            <h2>Weather App</h2>
+        <Container fluid className="d-flex flex-column align-items-center justify-content-start weather-app" style={{ backgroundImage: `url(${background})` }}>
             <SearchBar />
             {weatherState.isData ? <DisplayWeather /> : null}
-        </StyledWeatherApp>
+        </Container>
     )
 }
 export default WeatherApp
