@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { WeatherContext } from "../services/WeatherContext";
-import StyledWeatherAppForm from "../styles/styledComponents/StyledWeatherAppForm";
+import { Form, Button } from "react-bootstrap";
 import { isoCode } from '../datas/isoCode';
 
 // API Call
@@ -69,16 +69,17 @@ function SearchBar() {
 
     return (
         <React.Fragment>
-            <StyledWeatherAppForm>
-                <label>City</label>
-                <input type="text" name="city" placeholder="Paris" onChange={(e) => setCity(e.target.value)} />
-                <select value={country} onChange={handleChange}>
+
+            <Form className="d-flex flex-row align-items-center justify-content-center" style={{ color: "white" }}>
+                <Form.Label>City</Form.Label>
+                <Form.Control type="text" placeholder="Enter city" onChange={(e) => setCity(e.target.value)} className="custom-form" />
+                <Form.Select aria-label="Default select example" onChange={handleChange} className="custom-form">
                     {isoCode.map(({ value, label }) => (
                         <option key={value} value={value}>{label}</option>
                     ))}
-                </select>
-                <button type="button" onClick={onSubmit}>Search</button>
-            </StyledWeatherAppForm>
+                </Form.Select>
+                <Button variant="dark" type="submit" onClick={onSubmit} className="custom-button">Search</Button>
+            </Form>
         </React.Fragment>
     )
 }
